@@ -91,3 +91,17 @@ function updateRecords(id, prop, value) {
 
 // Alter values below to test your code
 updateRecords(5439, "artist", "ABBA");
+
+// Interesting ES6 template literals
+function tag(strings, ...values) {
+	if(values[0] < 20) {
+		values[1] = 'awake';
+	} else {
+		values[1] = 'sleepy';
+	}
+	return `${strings[0]}${values[0]}${strings[1]}${values[1]}`
+}
+
+var message = tag`It's ${new Date().getHours()}, and I'm ${''}`;
+
+console.log(message);
