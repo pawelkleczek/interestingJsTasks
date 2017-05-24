@@ -93,15 +93,27 @@ function updateRecords(id, prop, value) {
 updateRecords(5439, "artist", "ABBA");
 
 // Interesting ES6 template literals
-function tag(strings, ...values) {
+function tag(bryk, ...values) {
 	if(values[0] < 20) {
 		values[1] = 'awake';
 	} else {
 		values[1] = 'sleepy';
 	}
-	return `${strings[0]}${values[0]}${strings[1]}${values[1]}`
+	return `${bryk[0]}${values[0]}${bryk[1]}${values[1]}`
 }
 
-var message = tag`It's ${new Date().getHours()}, and I'm ${''}`;
+let message = tag`It's ${new Date().getHours()}, and I'm ${''}`;
 
 console.log(message);
+
+
+// New task
+// Create a function that takes two or more arrays and returns an array of the symmetric difference (△ or ⊕) of the provided arrays.
+//
+// Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}).
+
+function sym(args) {
+  return args;
+}
+
+sym([1, 2, 3], [5, 2, 1, 4]);
