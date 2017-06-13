@@ -112,8 +112,39 @@ console.log(message);
 //
 // Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}).
 
-function sym(args) {
-  return args;
+function sym(arg) {
+  	var args = [].slice.call(arguments);
+	let newArray = [];
+	args.forEach( e => newArray.push(e));
+	console.log(newArray);
 }
 
 sym([1, 2, 3], [5, 2, 1, 4]);
+
+function symDif(something) {
+
+	let args = [].slice.call(arguments);
+
+	return args.reduce(function(a,b) {
+
+			b.filter((e,i,a) => {
+				if (a.lastIndexOf(e) != i) {
+					a.splice(i, 1);
+					return;
+    			}
+			});
+
+		return a.concat(b.filter(function(e, i, a) {
+			if (a.indexOf(e) != -1)
+			{
+				a.splice(a.indexOf(e), 1);
+				return;
+			} else {
+				return e;
+			}
+			})
+		);
+	}, []);
+}
+
+console.log(symDif([1, 2, 3], [5, 2, 1, 4], [4, 3, 2]));
